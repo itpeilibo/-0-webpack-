@@ -1,4 +1,5 @@
 import app from '../src/app.vue'
+import './style.css'
 //引入Vue
 //引入App
 import './banner'

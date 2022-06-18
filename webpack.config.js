@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 // - 根目录下新建
 // - COMMONJS规范导出对象
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 3. 入口和出口
 const { join } = require('path');
 module.exports = {
@@ -24,15 +25,15 @@ module.exports = {
       template: join(__dirname, 'public/index.html'),
       filename: 'index.html'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.css/i,
         // 解析规则 从后往前
-        use: ['style-loader', 'css-loader'],
-        
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       }, 
       {
         test: /\.less$/i,
